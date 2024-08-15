@@ -6,11 +6,11 @@ function updateList() {
     let lessionIndex = 0;
 
     Array.from(list.children).forEach(function (item) {
+        var itemquerry = item.querySelector("span")
+            ? item.querySelector("span").innerText
+            : item.innerText;
         if (item.classList.contains("active")) {
             moduleIndex++;
-            var itemquerry = item.querySelector("span")
-                ? item.querySelector("span").innerText
-                : item.innerText;
             item.innerHTML = `Module ${moduleIndex}: <span>${itemquerry}</span>`;
         } else {
             lessionIndex++;
@@ -71,7 +71,6 @@ function handleDragOver(e) {
 
 function handleDragEnd(e) {
     e.preventDefault();
-    dragEl.classList.remove("blur");
 
     updateList();
 
